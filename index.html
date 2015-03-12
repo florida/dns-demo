@@ -21,10 +21,10 @@
     <p id="names">Something... generic</p>
     <script>
 
-      var text = ["Hi", "what", "up", "merr....", "errr", "k", "thx", "bai"];
       var counter = 0;
       var namep = document.getElementById("names");
       var names = window.location.hash.replace('#', '');
+      var text = [names, "Hi", "what", "up", "uh....", "errr", "k", "thx", "bai"];
 
       function change() {
         namep.innerHTML = text[counter];
@@ -34,7 +34,7 @@
 
       if(names !== "" || names === undefined) {
         namep.innerHTML = names;
-        setInterval(change, 2000);
+        setInterval(change, 1000);
       }
 
 
