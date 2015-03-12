@@ -2,12 +2,30 @@
 <html>
   <head>
     <title>HI</title>
+    <style>
+      body {
+        background: black;
+        font-family: Helvetica;
+      }
+
+      #names {
+        color: white;
+        font-size: 90px;
+        top: 30vh;
+        position: relative;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <p id="names">BUTTZ</p>
+    <p id="names">Something... generic</p>
     <script>
-      var names = document.getElementById("names");
-      names.innerHTML = window.location.hash.replace('#', '');
+      var namep = document.getElementById("names");
+      var names = window.location.hash.replace('#', '');
+
+      if(names !== "" || names === undefined) {
+        namep.innerHTML = names;
+      }
     </script>
   </body>
 </html>
