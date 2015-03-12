@@ -1,15 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title></title>
-
+    <title>HI</title>
   </head>
   <body>
     <p id="names">BUTTZ</p>
     <script>
       var names = document.getElementById("names");
-      names.innerHTML = window.location.host.split(".")[0];
+      names.innerHTML = window.location.hash.replace('#', '');
     </script>
-
   </body>
 </html>
