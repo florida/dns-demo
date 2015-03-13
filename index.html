@@ -2,42 +2,113 @@
 <html>
   <head>
     <title>HI</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400italic,100,100italic,400' rel='stylesheet' type='text/css'>
     <style>
-      body {
-        background: black;
-        font-family: Helvetica;
+      html {
+        box-sizing: border-box;
       }
 
-      #names {
-        color: white;
-        font-size: 90px;
-        top: 30vh;
-        position: relative;
-        text-align: center;
+      *, *:before, *:after {
+        box-sizing: inherit;
       }
+
+      body {
+        background: white;
+        font-family: 'Roboto', Helvetica, sans-serif;
+        font-weight: 100;
+      }
+
+      .main {
+        color: #ED4243;
+        font-size: 40px;
+        position: relative;
+        width: 960px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .logo {
+        height: 50px;
+      }
+
+      #card {
+        padding: 20px;
+        margin: 30px auto;
+        border: 2px solid #ED4243;
+        border-radius: 30px;
+        width: 400px;
+        padding-bottom: 30px;
+      }
+
+      #card .logo {
+        height: 30px;
+      }
+
+      #card p {
+        text-align: center;
+        font-size: 40px;
+        margin: 30px 0 0px 0;
+      }
+
+      #card .title {
+        margin-top: 5px;
+        font-size: 15px;
+      }
+
+      #card .studentnumber{
+        margin-top: 5px;
+        font-size: 15px;
+      }
+
+      .enrolledsince {
+        font-size: 15px !important;
+        text-align: left !important;
+        margin-bottom: 0;
+      }
+
     </style>
   </head>
   <body>
-    <p id="names">Something... generic</p>
+    <section>
+      <img src="logo.png" class="logo" alt="" />
+    </section>
+    <p class="main">Hi <span class="names"></span>, Red Academy is a new technology academy created for the web designers, creators, developers and digital marketers of tomorrow, just like yourself. Apply now. #YouAreRed</p>
+
+    <section id="card">
+      <img src="logo.png" class="logo" alt="" />
+      <section>
+        <p class="names"></p>
+        <p class="title">Student</p>
+        <p class="studentnumber">123446</p>
+      </section>
+      <p class="enrolledsince">Enrolled Since: <span id="enrldate"></span></p>
+    </section>
+
     <script>
+      Date.prototype.yyyymmdd = function() {
+        var yyyy = this.getFullYear().toString();
+        var mm = (this.getMonth()+1).toString();
+        var dd  = this.getDate().toString();
+        return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]);
+      };
 
-      var counter = 0;
-      var namep = document.getElementById("names");
+      d = new Date();
+      d.yyyymmdd();
+
+      var namep = document.getElementsByClassName("names");
+      var enrldate = document.getElementById("enrldate");
       var names = window.location.hash.replace('#', '');
-      var text = [names, "Hi", "what", "up", "uh....", "errr", "k", "thx", "bai"];
 
-      function change() {
-        namep.innerHTML = text[counter];
-        counter++;
-        if(counter >= text.length) { counter = 0; }
-      }
+      enrldate.innerHTML = d.yyyymmdd();
 
       if(names !== "" || names === undefined) {
-        namep.innerHTML = names;
-        setInterval(change, 1000);
+        for (var i = 0; i < namep.length; i++) {
+          namep[i].innerHTML = names;
+        }
+
+        setInterval(change, 100);
       }
-
-
     </script>
   </body>
 </html>
